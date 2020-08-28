@@ -24,7 +24,7 @@ const FilterByGenre = (
   { movies, filterForNameOrRating }
 ) => {
   const [input, setInput] = useState("");
-  const [value, setValue] = useState(28);
+  const [value, setValue] = useState(null);
   const [genres, setGenres] = useState([])
 
    useEffect( () =>{
@@ -42,13 +42,15 @@ const FilterByGenre = (
   }, []);
   
   const handleChange = (e) => {
+      console.log('handle change', e.target.value)
     setValue(parseInt(e.target.value))
+    console.log(value)
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("in", input);
-    filterForNameOrRating(movies.movies, "genre", parseInt(input));
+    console.log("in input", value);
+    filterForNameOrRating(movies.movies, "genre", value);
   };
 
   const handleClear = e => {

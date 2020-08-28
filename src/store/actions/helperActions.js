@@ -48,16 +48,13 @@ export const filterForNameOrRating = (movieList, searchType, searchInput) => {
         return filteredMovies;
 
       case "genre":
-        console.log('searchInput', typeof parseInt(searchInput), parseInt(searchInput))
-        debugger;
-        
+        console.log(searchInput)
         filteredMovies =
           movieList.length > 0 &&
-          movieList.filter(o => o["genre_ids"].includes(searchInput));
+          movieList.filter(o => o["genre_ids"].indexOf(searchInput) > 0);
         dispatch(getMoviesSuccess(filteredMovies));
 
         return filteredMovies;
     }
-    dispatch(getMoviesSuccess(filteredMovies));
   };
 };
