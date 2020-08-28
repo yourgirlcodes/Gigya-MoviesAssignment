@@ -6,7 +6,7 @@ import "./App.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { HeaderText } from "./App.styled";
-import Filter from './components/Filter';
+import {Filter} from './components/Filter';
 class App extends React.Component {
   constructor(props) {
     super(props);
