@@ -1,15 +1,8 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from 'redux-thunk';
+import rootReducer from './rootReducer'
 
-const initialState = {
-  movies: [],
-  search: "",
-  loading: false
-};
 
-const reducer = (state = initialState, action) => {
-  return state;
-};
-
-const store = createStore(reducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
