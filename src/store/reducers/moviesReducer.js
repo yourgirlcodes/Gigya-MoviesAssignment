@@ -38,6 +38,8 @@ import {
       case GET_MOVIES_SUCCESS:
         // All done: set loading "false".
         // Also, replace the movies with the ones from the server
+        console.log(state, action)
+
         return {
           ...state,
           loading: false,
