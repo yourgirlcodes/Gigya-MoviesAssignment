@@ -5,7 +5,7 @@ import { TextField, Button } from "@material-ui/core";
 import { Form } from "./styled";
 
 const SearchForm = ({ movies, filterForNameOrRating }) => {
-  const [input, setInput] = useState(" ");
+  const [input, setInput] = useState("");
 
   const handleSubmit = (e, type) => {
     e.preventDefault();
@@ -23,6 +23,7 @@ const SearchForm = ({ movies, filterForNameOrRating }) => {
         id="standard-basic"
         label="Enter Keyword"
         onChange={e => setInput(e.target.value)}
+        value={input}
       />
       <Button
         style={{ marginRight: "5px", marginLeft: "5px" }}

@@ -33,6 +33,7 @@ exports[`SearchForm component Matches the snapshot 1`] = `
         onFocus={[Function]}
         required={false}
         type="text"
+        value=""
       />
     </div>
   </div>
