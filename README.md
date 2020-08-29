@@ -1,68 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Film Browser - React-Redux Project with themoviedb API
 
-## Available Scripts
+## Architecture:
 
-In the project directory, you can run:
+App 
+    - components
+        - Filter
+            - FilterByGenre
+            - FilterByName
+            - Genres
+            - NameSearchForm
+        - Header
+        - Movies
+    - constants
+        - api_key
+    - store
+        - actions
+            - helperActions
+            - moviesActions
+        - reducers
+            - moviesReducer
+            - rootReducer
+    - tests
+    
 
-### `npm start`
+## Tech Stack:
+1. React.js
+2. Redux
+3. Semantic-UI for React
+4. Styled-Components
+5. @testing-library/react for some tests
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Redux
+Used to manage the state of the app
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+State is an object with key-value pairs like:
+ state = {
+ movies: [array of films either filtered or as received from  API]
+ allMovies: [array of films received from API]
+ loading: boolean illustrating state of fetching the API
+ error: string
+ }
+ 
+ # Actions
+ getMoviesBegin
+ gettingMovies
+ getMoviesSuccess
+ getMoviesError
+ 
+ # Action Types
+ GET_MOVIES_BEGIN
+ GET_MOVIES_IN_PROCESS
+ GET_MOVIES_SUCCESS
+ GET_MOVIES_FAILURE
+ 
+ # Reducers
+ moviesReducer 
+ 
+ 
+## My thoughts:
+Improvements can be made regarding testing - all the tests I had 'planned to have' are not present - I will add them soon as I learn how to use the testing technologies better (but, I did try my best :) )
+Improvements can be made regarding filtering - I would like to add more filtering options
+Improvements can be made regarding the UX of the Advanced Filtering Accordions and other small UI elements
+General improvements regarding the code that will come with more experience
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to run:
+npm start will run the scripts
+npm test will run the tests
+ 
 
-### `npm run build`
+This project uses the API of themoviedb: https://api.themoviedb.org/3/movie/76341?api_key=<<api_key>>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project was bootstrapped with [Create React App (https://github.com/facebook/create-react-app).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
