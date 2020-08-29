@@ -65,8 +65,11 @@ State is an object with key-value pairs like:
  
 ## My thoughts:
 Improvements can be made regarding testing - all the tests I had 'planned to have' are not present - I will add them soon as I learn how to use the testing technologies better (but, I did try my best :) )
+
 Improvements can be made regarding filtering - I would like to add more filtering options
+
 Improvements can be made regarding the UX of the Advanced Filtering Accordions and other small UI elements
+
 General improvements regarding the code that will come with more experience
 
 
