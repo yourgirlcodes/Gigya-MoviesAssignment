@@ -3,12 +3,13 @@
 ## Architecture:
 
 App 
+    
     - components
-        - Filter
+       - Filter
             - FilterByGenre
             - FilterByName
             - Genres
-            - NameSearchForm
+            - NameSearchForm     
         - Header
         - Movies
     - constants
@@ -34,24 +35,29 @@ App
 Used to manage the state of the app
 
 State is an object with key-value pairs like:
+ 
  state = {
  movies: [array of films either filtered or as received from  API]
+ 
  allMovies: [array of films received from API]
+ 
  loading: boolean illustrating state of fetching the API
+ 
  error: string
  }
  
+ 
  # Actions
- getMoviesBegin
- gettingMovies
- getMoviesSuccess
- getMoviesError
+ 1. getMoviesBegin
+ 2. gettingMovies
+ 3. getMoviesSuccess
+ 4. getMoviesError
  
  # Action Types
- GET_MOVIES_BEGIN
- GET_MOVIES_IN_PROCESS
- GET_MOVIES_SUCCESS
- GET_MOVIES_FAILURE
+1. GET_MOVIES_BEGIN
+2. GET_MOVIES_IN_PROCESS
+3. GET_MOVIES_SUCCESS
+4. GET_MOVIES_FAILURE
  
  # Reducers
  moviesReducer 
@@ -66,6 +72,7 @@ General improvements regarding the code that will come with more experience
 
 ## How to run:
 npm start will run the scripts
+
 npm test will run the tests
  
 
