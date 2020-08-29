@@ -1,11 +1,10 @@
 import React from "react";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Tooltip from "@material-ui/core/Tooltip";
-import {MovieList, MovieContainer} from './styled'
-
-
+import { MovieList, MovieContainer, TooltipActiveArea, ReleaseDate } from "./styled";
+import {HeaderText} from '../Header/styled'
 class MoviesList extends React.Component {
   constructor(props) {
     super(props);
@@ -28,45 +27,48 @@ class MoviesList extends React.Component {
     return starRating;
   };
 
-  componentDidUpdate(props, newProps){
-    console.log(props, newProps)
-  }
-
   render() {
+    const { movies } = this.props;
     return (
       <MovieList>
-        {this.props.movies.loading ? <div>hi</div> :
-        this.props.movies.movies.length > 0 && this.props.movies.movies.map(film => {
-          return (
-            <MovieContainer
-            style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${film.poster_path})`}}
-              poster={film.poster_path}
-            >
-              <Tooltip title={film.overview}>
-                <div style={{height: "200px",
-                width: "200px"}}>
-                  <div className="release-date">
-                    Released: {film.release_date}
-                  </div>
+        {movies.loading ? (
+          <div>loading...</div>
+        ) : (
+          movies.movies.length > 0 ? (
+          movies.movies.map(film => {
+            return (
+              <MovieContainer
+                style={{
+                  backgroundImage: `url(https://image.tmdb.org/t/p/w500${film.poster_path})`
+                }}
+                poster={film.poster_path}
+              >
+                <Tooltip title={film.overview}>
+                  <TooltipActiveArea>
+                    <ReleaseDate>
+                      Released: {film.release_date}
+                    </ReleaseDate>
 
-                  {this.renderStarRating(film.vote_average)}
-                  </div>
-              </Tooltip>
-            </MovieContainer>
-          );
-        })}
-        
+                    {this.renderStarRating(film.vote_average)}
+                </TooltipActiveArea>
+                </Tooltip>
+              </MovieContainer>
+            )
+         
+          }))
+          :
+          <HeaderText>bummer, nothing to see here</HeaderText>
+        )}
       </MovieList>
     );
   }
 }
 
-function mapStateToProps(state){
-    return{
-        movies: state.movies,
-        loading: state.loading
-
-    }
+function mapStateToProps(state) {
+  return {
+    movies: state.movies,
+    loading: state.loading
+  };
 }
 
-export default connect(mapStateToProps)(MoviesList)
+export default connect(mapStateToProps)(MoviesList);

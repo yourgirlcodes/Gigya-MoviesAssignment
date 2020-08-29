@@ -15,7 +15,7 @@ export const gettingMovies = (movies,loading) => ({
   payload: { movies, loading }
 });
 
-export const getMoviesSuccess = (movies, loading) => ({
+export const getMoviesSuccess = (movies, loading="false") => ({
   type: GET_MOVIES_SUCCESS,
   payload: { movies, loading }
 });

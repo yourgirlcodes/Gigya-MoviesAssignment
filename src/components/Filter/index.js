@@ -6,11 +6,7 @@ export const Filter = () => {
   return (
     <React.Fragment>
       <FilterByName />
-      <FilterByGenre />{" "}
+      <FilterByGenre />
     </React.Fragment>
   );
 };
-
-// Header Components
-// Text
-// Filtering/Search Bar

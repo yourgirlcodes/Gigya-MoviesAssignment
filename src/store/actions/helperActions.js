@@ -5,7 +5,6 @@ import {
   getMoviesError
 } from "./moviesActions";
 import { api_key } from "../../constants/api_key";
-import { Switch } from "@material-ui/core";
 
 export const getSixtyTrendingMovies = () => {
   let movieArray = [];
@@ -31,9 +30,7 @@ export const getSixtyTrendingMovies = () => {
 
 export const filterForNameOrRating = (movieList, searchType, searchInput) => {
   let filteredMovies = [];
-  console.log(movieList, searchType, searchInput);
   return dispatch => {
-    console.log("in 1");
 
     switch (searchType) {
       case "title":
@@ -48,13 +45,15 @@ export const filterForNameOrRating = (movieList, searchType, searchInput) => {
         return filteredMovies;
 
       case "genre":
-        console.log(searchInput)
         filteredMovies =
           movieList.length > 0 &&
           movieList.filter(o => o["genre_ids"].indexOf(searchInput) > 0);
         dispatch(getMoviesSuccess(filteredMovies));
-
         return filteredMovies;
+
+      case "clear":
+        dispatch(getMoviesSuccess(movieList));
+        return movieList;
     }
   };
 };

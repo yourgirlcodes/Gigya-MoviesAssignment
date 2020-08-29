@@ -1,68 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import {
-  filterForNameOrRating,
-  getSixtyTrendingMovies
-} from "../../store/actions/helperActions";
+import React from "react";
 import {
   Accordion,
-  RadioGroup,
   Typography,
   AccordionDetails,
-  AccordionSummary,
-  FormLabel,
-  FormControlLabel,
-  Radio,
-  Button,
-  FormControl
+  AccordionSummary
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-// import genres from '../../api/getGenres'
+import Genres  from "./Genres";
 
-
-const FilterByGenre = (
-  { movies, filterForNameOrRating }
-) => {
-  const [input, setInput] = useState("");
-  const [value, setValue] = useState(null);
-  const [genres, setGenres] = useState([])
-
-   useEffect( () =>{
-    var genreArray = [...genres];
-      fetch(
-      "https://api.themoviedb.org/3/genre/movie/list?api_key=8923d36e31d7a495303d48e5eee63381&language=en-US"
-    )
-      .then(res => {
-        return res.json();
-      })
-      .then(json => {
-        genreArray = json.genres
-        setGenres(genreArray)
-      });
-  }, []);
-  
-  const handleChange = (e) => {
-      console.log('handle change', e.target.value)
-    setValue(parseInt(e.target.value))
-    console.log(value)
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log("in input", value);
-    filterForNameOrRating(movies.movies, "genre", value);
-  };
-
-  const handleClear = e => {
-    // e.preventDefault();
-    setInput(" ");
-
-    // getSixtyTrendingMovies();
-  };
-
+const FilterByGenre = () => {
   return (
     <React.Fragment>
-      Advanced Filtering
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -72,61 +20,11 @@ const FilterByGenre = (
           <Typography>Filter by Genre</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <FormControl component="fieldset">
-            <RadioGroup
-              aria-label="gender"
-              name="gender1"
-              value={value}
-              onChange={handleChange}
-            >
-              { genres.length > 0 && genres.map(genre => {
-                return (
-                  <FormControlLabel
-                    value={genre.id}
-                    control={<Radio />}
-                    label={genre.name}
-                  />
-                );
-              })}
-              <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              onClick={e => handleSubmit(e)}
-            >
-              Submit
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              onClick={e => handleClear(e)}
-            >
-              Clear
-            </Button>
-
-            </RadioGroup>
-
-          </FormControl>{" "}
-
+          <Genres />
         </AccordionDetails>
       </Accordion>
     </React.Fragment>
   );
 };
 
-// search by Genre: click: fires off function that pulls list of genres
-// keyword: filter according to words includes
-// Release date: can have date picker
-// vote average: filer
-
-function mapStateToProps(state) {
-  return {
-    movies: state.movies,
-    loading: state.loading
-  };
-}
-
-export default connect(mapStateToProps, { filterForNameOrRating })(
-  FilterByGenre
-);
+export default FilterByGenre;

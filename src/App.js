@@ -1,5 +1,4 @@
 import React from "react";
-import { Header } from "./components/Header";
 import MoviesList from "./components/Movies";
 import { getSixtyTrendingMovies , filterForNameOrRating} from "./store/actions/helperActions";
 import "./App.css";
@@ -12,12 +11,11 @@ class App extends React.Component {
     super(props);
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     await this.props.getSixtyTrendingMovies();
   }
 
   render() {
-    console.log("render", this.props);
     return (
       <React.Fragment>
         <HeaderText>Top 60 Trending Movies for Last Week</HeaderText>
@@ -27,13 +25,6 @@ class App extends React.Component {
     );
   }
 }
-
-// export default App;
-
-// Considerations:
-// Call to API for 60 Movies (call is 3 times)
-// Filtering = API call (they have an endpoint)
-// In Redux store update the array of objects you get from the API call -- source of truth!
 
 function mapStateToProps(state) {
   return {

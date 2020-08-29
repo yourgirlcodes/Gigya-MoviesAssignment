@@ -8,8 +8,3 @@ export const Header = () => {
         </HeaderText>
     )
 }
-
-
-// Header Components
-// Text
-// Filtering/Search Bar
