@@ -10,7 +10,6 @@ const initialState = {
   allMovies: [],
   loading: false,
   error: null,
-  search: null
 };
 
 export default function moviesReducer(state = initialState, action) {
@@ -35,7 +34,7 @@ export default function moviesReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        movies: action.payload.movies
+        movies: action.payload.movies,
       };
 
     case GET_MOVIES_FAILURE:
