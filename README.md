@@ -2,7 +2,7 @@
 
 ## Architecture:
 
-App 
+    App 
     
     - components
        - Filter
